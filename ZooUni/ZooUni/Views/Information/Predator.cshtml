@@ -1,0 +1,41 @@
+﻿@model IEnumerable<AnimalViewModel>
+<h1>
+    Predator's information
+</h1>
+<ul>
+    <img src="https://cdn.pixabay.com/photo/2020/04/25/18/31/lion-5092047_960_720.png" style="overflow: hidden; position: relative; width:700px; height:500px;" />
+</ul>
+<ul>
+    Predation is a biological interaction where one organism, the predator,
+    kills and eats another organism, its prey.
+    It is one of a family of common feeding behaviours that includes parasitism and micropredation
+    (which usually do not kill the host) and parasitoidism (which always does, eventually).
+    It is distinct from scavenging on dead prey, though many predators also scavenge;
+    it overlaps with herbivory, as seed predators and destructive frugivores are predators.
+</ul>
+<ul>
+    <img src="https://cdn.pixabay.com/photo/2016/03/26/07/54/wild-1280149_960_720.png" style="overflow: hidden; position: relative; width:500px; height:500px;" />
+</ul>
+<ul>
+    Predators may actively search for or pursue prey or wait for it,
+    often concealed. When prey is detected, the predator assesses whether to attack it.
+    This may involve ambush or pursuit predation, sometimes after stalking the prey.
+    If the attack is successful, the predator kills the prey,
+    removes any inedible parts like the shell or spines, and eats it.
+</ul>
+<ul>
+    <h2>Predators in the Zoo:</h2>
+
+    @foreach (var predator in Model)
+    {
+        @if (predator.Kind == "Predator")
+        {
+            <h3>
+                @predator.Type
+            </h3>
+            <ul>
+                <img src="@predator.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
+            </ul>
+        }
+    }
+</ul>

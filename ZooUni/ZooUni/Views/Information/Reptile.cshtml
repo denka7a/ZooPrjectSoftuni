@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AnimalViewModel>
+<h1>
+    Reptile's information
+</h1>
+<ul>
+    <img src="https://cdn.pixabay.com/photo/2020/11/12/18/28/lizard-5736400_960_720.png" style="overflow: hidden; position: relative; width:700px; height:500px;" />
+</ul>
+<ul>
+    Reptiles, as most commonly defined, are the animals in the class Reptilia,
+    a paraphyletic grouping comprising all amniotes. The class comprises turtles,
+    crocodilians, snakes, amphisbaenians, lizards, tuatara, and their extinct relatives.
+    In the traditional Linnaean classification system, birds are considered a separate class to reptiles.
+    However, crocodilians are more closely related to birds than they are to other living reptiles,
+    and so modern cladistic classification systems include birds within Reptilia,
+    redefining the term as a clade.
+    Other cladistic definitions abandon the term reptile altogether in favor of the clade Sauropsida,
+    which refers to all animals more closely related to modern reptiles than to mammals.
+</ul>
+<ul>
+    <img src="https://i.dlpng.com/static/png/7293352_preview.png" style="overflow: hidden; position: relative; width:800px; height:500px;" />
+</ul>
+<ul>
+    Reptiles are tetrapod vertebrates, creatures that either have four limbs or, like snakes,
+    are descended from four-limbed ancestors. Unlike amphibians,
+    reptiles do not have an aquatic larval stage. Most reptiles are oviparous,
+    although several species of squamates are viviparous,
+    as were some extinct aquatic clades - the fetus develops within the mother,
+    using a (non-mammalian) placenta rather than contained in an eggshell. As amniotes,
+    reptile eggs are surrounded by membranes for protection and transport,
+    which adapt them to reproduction on dry land.
+    Many of the viviparous species feed their fetuses through various forms of placenta analogous to those of mammals,
+    with some providing initial care for their hatchlings. Extant reptiles range in size from a tiny gecko.
+</ul>
+<ul>
+    <h2>Reptile's in the Zoo:</h2>
+
+    @foreach (var reptile in Model)
+    {
+        @if (reptile.Kind == "Reptile")
+        {
+            <h3>
+                @reptile.Type
+            </h3>
+            <ul>
+                <img src="@reptile.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
+            </ul>
+        }
+    }
+</ul>

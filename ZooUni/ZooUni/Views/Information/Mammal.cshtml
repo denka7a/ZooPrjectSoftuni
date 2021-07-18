@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AnimalViewModel>
+<h1>
+    Mammal's information
+</h1>
+<ul>
+    <img src="https://pngimg.com/uploads/elephants/elephants_PNG18776.png" style="overflow: hidden; position: relative; width:400px; height:400px;" />
+</ul>
+<ul>
+    Mammals are a group of vertebrate animals
+    constituting the class Mammalia and characterized
+    by the presence of mammary glands which in females
+    produce milk for feeding (nursing) their young, a neocortex (a region of the brain),
+    fur or hair, and three middle ear bones.
+    These characteristics distinguish them from reptiles and birds,
+    from which they diverged in the Carboniferous, over 300 million years ago.
+    Around 6,400 extant species of mammals have been described. The largest orders are the rodents,
+    bats and Eulipotyphla (hedgehogs, moles, shrews, and others).
+</ul>
+<ul>
+    <img src="https://cdn.pixabay.com/photo/2017/09/02/22/10/dolphin-2708695_1280.png" style="overflow: hidden; position: relative; width:300px; height:500px;" />
+</ul>
+<ul>
+    The basic body type is quadruped,
+    and most mammals use their four extremities for terrestrial locomotion;
+    but in some, the extremities are adapted for life at sea, in the air, in trees, underground,
+    or on two legs. Mammals range in size from the 30–40 mm (1.2–1.6 in)
+    bumblebee bat to the 30 m (98 ft) blue whale—possibly the largest animal to have ever lived.
+    Maximum lifespan varies from two years for the shrew to 211 years for the bowhead whale.
+    All modern mammals give birth to live young, except the five species of monotremes,
+    which are egg-laying mammals.
+</ul>
+<ul>
+    <h2>Mammals in the Zoo:</h2>
+
+    @foreach (var mammal in Model)
+    {
+        @if (mammal.Kind == "Mammal")
+        {
+            <h3>
+                @mammal.Type
+            </h3>
+            <ul>
+                <img src="@mammal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
+            </ul>
+        }
+    }
+</ul>

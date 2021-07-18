@@ -1,0 +1,27 @@
+﻿@model List<AnimalViewModel>
+
+<h1>
+    There are all animals in the Zoo!
+</h1>
+
+<ul>
+    @foreach (var animal in Model)
+    {
+        <h3>
+            <ul>
+                @animal.Type
+            </ul>
+            <ul>
+                @animal.Name
+            </ul>
+            <ul>
+                <img src="@animal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
+            </ul>
+            <ul>
+                @animal.Kind
+            </ul>
+        </h3>
+    }
+</ul>
+
+
