@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace ZooUni.Data
 {
     public class ZooContext : IdentityDbContext
     {
+
         public ZooContext(DbContextOptions<ZooContext> options)
                   : base(options)
         {
@@ -17,6 +19,8 @@ namespace ZooUni.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<Animal>().HasData(
                 new Animal
                 {
@@ -107,6 +111,8 @@ namespace ZooUni.Data
                     URL = "https://s.hdnux.com/photos/70/22/51/14756432/3/rawImage.jpg",
                     Kind = "Predator"
                 });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
