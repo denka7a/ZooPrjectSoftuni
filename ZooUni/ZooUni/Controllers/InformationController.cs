@@ -14,6 +14,11 @@ namespace ZooUni.Controllers
             this.zooContext = zooContex;
         }
 
+        public IActionResult Info()
+        {
+            return View();
+        }
+
         public IActionResult Predator()
         {
             var animals = this.zooContext.Animals.Select(x => new AnimalViewModel

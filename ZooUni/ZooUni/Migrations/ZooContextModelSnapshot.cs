@@ -266,7 +266,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 3,
                             Kind = "Mammal",
-                            Name = "",
+                            Name = "Emil",
                             Type = "Giraffe",
                             URL = "https://www.gannett-cdn.com/presto/2019/06/21/PKNS/6d8c357f-2dd6-4730-8d85-5eb6a481ec2a-kns-zoo-0622_BP.JPG"
                         },
@@ -274,7 +274,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 4,
                             Kind = "Predator",
-                            Name = "",
+                            Name = "Meca",
                             Type = "Bear",
                             URL = "https://www.indianapoliszoo.com/wp-content/uploads/2018/04/CROPPED_Brown_Bear-Cheryl_Wesselresizedresized.jpg"
                         },
@@ -282,7 +282,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 5,
                             Kind = "Mammal",
-                            Name = "",
+                            Name = "Ancho",
                             Type = "Elephant",
                             URL = "https://media.npr.org/assets/img/2017/01/10/elephant1_custom-14cf2c849d4a2c5aaac9d1b017f64c4adb9f04e4.jpg"
                         },
@@ -290,7 +290,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 6,
                             Kind = "Reptile",
-                            Name = "",
+                            Name = "Adam",
                             Type = "Crocodile",
                             URL = "https://bristolzoo.org.uk/cmsassets/body/Animals-and-Attractions/Dwarf-Crocodiles/_galleryMainNew/Dwarf-Crododiles-gallery-1.jpg"
                         },
@@ -298,7 +298,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 7,
                             Kind = "Predator",
-                            Name = "",
+                            Name = "White Fang",
                             Type = "Wolf",
                             URL = "https://arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/UXEKVA33VJB6VL4ZEYDXF4NTOY.JPG"
                         },
@@ -306,7 +306,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 8,
                             Kind = "Mammal",
-                            Name = "",
+                            Name = "Rudolph",
                             Type = "Deer",
                             URL = "https://cdn.pixabay.com/photo/2017/05/23/10/22/deer-2336769_960_720.jpg"
                         },
@@ -314,7 +314,7 @@ namespace ZooUni.Migrations
                         {
                             Id = 9,
                             Kind = "Mammal",
-                            Name = "",
+                            Name = "Kong",
                             Type = "Gorilla",
                             URL = "http://cincinnatizoo.org/wp-content/uploads/2014/04/gladys_jomo-005.jpg"
                         },
@@ -322,9 +322,25 @@ namespace ZooUni.Migrations
                         {
                             Id = 10,
                             Kind = "Predator",
-                            Name = "",
+                            Name = "Freckles",
                             Type = "Hippopotamus",
                             URL = "https://s.hdnux.com/photos/70/22/51/14756432/3/rawImage.jpg"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Kind = "Reptile",
+                            Name = "Franklin",
+                            Type = "Turtle",
+                            URL = "https://d3i6fh83elv35t.cloudfront.net/static/2017/11/4934015500_711809ea1e_b-1024x747.jpg"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Kind = "Reptile",
+                            Name = "Konan",
+                            Type = "Varan",
+                            URL = "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/images/komodo.jpg?itok=z9J3SnRt"
                         });
                 });
 

@@ -44,7 +44,7 @@ namespace ZooUni.Data
                 {
                     Id = 3,
                     Type = "Giraffe",
-                    Name = "",
+                    Name = "Emil",
                     URL = "https://www.gannett-cdn.com/presto/2019/06/21/PKNS/6d8c357f-2dd6-4730-8d85-5eb6a481ec2a-kns-zoo-0622_BP.JPG",
                     Kind = "Mammal"
                 },
@@ -53,7 +53,7 @@ namespace ZooUni.Data
                 {
                     Id = 4,
                     Type = "Bear",
-                    Name = "",
+                    Name = "Meca",
                     URL = "https://www.indianapoliszoo.com/wp-content/uploads/2018/04/CROPPED_Brown_Bear-Cheryl_Wesselresizedresized.jpg",
                     Kind = "Predator"
                 },
@@ -62,7 +62,7 @@ namespace ZooUni.Data
                 {
                     Id = 5,
                     Type = "Elephant",
-                    Name = "",
+                    Name = "Ancho",
                     URL = "https://media.npr.org/assets/img/2017/01/10/elephant1_custom-14cf2c849d4a2c5aaac9d1b017f64c4adb9f04e4.jpg",
                     Kind = "Mammal"
                 },
@@ -71,7 +71,7 @@ namespace ZooUni.Data
                 {
                     Id = 6,
                     Type = "Crocodile",
-                    Name = "",
+                    Name = "Adam",
                     URL = "https://bristolzoo.org.uk/cmsassets/body/Animals-and-Attractions/Dwarf-Crocodiles/_galleryMainNew/Dwarf-Crododiles-gallery-1.jpg",
                     Kind = "Reptile"
                 },
@@ -80,7 +80,7 @@ namespace ZooUni.Data
                 {
                     Id = 7,
                     Type = "Wolf",
-                    Name = "",
+                    Name = "White Fang",
                     URL = "https://arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/UXEKVA33VJB6VL4ZEYDXF4NTOY.JPG",
                     Kind = "Predator"
                 },
@@ -89,7 +89,7 @@ namespace ZooUni.Data
                 {
                     Id = 8,
                     Type = "Deer",
-                    Name = "",
+                    Name = "Rudolph",
                     URL = "https://cdn.pixabay.com/photo/2017/05/23/10/22/deer-2336769_960_720.jpg",
                     Kind = "Mammal"
                 },
@@ -98,7 +98,7 @@ namespace ZooUni.Data
                 {
                     Id = 9,
                     Type = "Gorilla",
-                    Name = "",
+                    Name = "Kong",
                     URL = "http://cincinnatizoo.org/wp-content/uploads/2014/04/gladys_jomo-005.jpg",
                     Kind = "Mammal"
                 },
@@ -107,9 +107,26 @@ namespace ZooUni.Data
                 {
                     Id = 10,
                     Type = "Hippopotamus",
-                    Name = "",
+                    Name = "Freckles",
                     URL = "https://s.hdnux.com/photos/70/22/51/14756432/3/rawImage.jpg",
                     Kind = "Predator"
+                },
+
+                new Animal
+                {
+                    Id = 11,
+                    Type = "Turtle",
+                    Name = "Franklin",
+                    URL = "https://d3i6fh83elv35t.cloudfront.net/static/2017/11/4934015500_711809ea1e_b-1024x747.jpg",
+                    Kind = "Reptile"
+                },
+                new Animal
+                {
+                    Id = 12,
+                    Type = "Varan",
+                    Name = "Konan",
+                    URL = "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/images/komodo.jpg?itok=z9J3SnRt",
+                    Kind = "Reptile"
                 });
 
             base.OnModelCreating(modelBuilder);
