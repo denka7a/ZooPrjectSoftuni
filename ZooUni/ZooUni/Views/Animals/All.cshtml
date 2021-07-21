@@ -1,7 +1,7 @@
 ﻿@model List<AnimalViewModel>
 
 <h1>
-    There are all animals in the Zoo!
+    <center>There are all animals in the Zoo!</center>
 </h1>
 
 <ul>
@@ -16,9 +16,6 @@
             </ul>
             <ul>
                 <img src="@animal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
-            </ul>
-            <ul>
-                @animal.Kind
             </ul>
         </h3>
     }
