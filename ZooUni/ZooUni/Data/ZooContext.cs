@@ -16,11 +16,16 @@ namespace ZooUni.Data
         {
         }
         public DbSet<Animal> Animals { get; set; }
+        public DbSet<Hospital> Hospital { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
+            modelBuilder
+                .Entity<Animal>()
+                .Property(x => x.HospitalisedAnimalId)
+                .IsRequired(false);
+           
             modelBuilder.Entity<Animal>().HasData(
                 new Animal
                 {
@@ -127,6 +132,13 @@ namespace ZooUni.Data
                     Name = "Konan",
                     URL = "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/images/komodo.jpg?itok=z9J3SnRt",
                     Kind = "Reptile"
+                });
+
+            modelBuilder.Entity<Hospital>().HasData(
+                new Hospital
+                {
+                    Id = 1,
+                    Name = "Hospital"
                 });
 
             base.OnModelCreating(modelBuilder);

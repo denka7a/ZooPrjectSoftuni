@@ -226,6 +226,9 @@ namespace ZooUni.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("HospitalisedAnimalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Kind")
                         .HasColumnType("nvarchar(max)");
 
@@ -242,6 +245,8 @@ namespace ZooUni.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HospitalisedAnimalId");
 
                     b.ToTable("Animals");
 
@@ -344,6 +349,28 @@ namespace ZooUni.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ZooUni.Data.Models.Hospital", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Hospital");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Hospital"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -393,6 +420,20 @@ namespace ZooUni.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ZooUni.Data.Models.Animal", b =>
+                {
+                    b.HasOne("ZooUni.Data.Models.Hospital", "HospitalisedAnimal")
+                        .WithMany("Animals")
+                        .HasForeignKey("HospitalisedAnimalId");
+
+                    b.Navigation("HospitalisedAnimal");
+                });
+
+            modelBuilder.Entity("ZooUni.Data.Models.Hospital", b =>
+                {
+                    b.Navigation("Animals");
                 });
 #pragma warning restore 612, 618
         }

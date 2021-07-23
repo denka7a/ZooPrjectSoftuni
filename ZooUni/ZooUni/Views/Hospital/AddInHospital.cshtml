@@ -1,0 +1,31 @@
+﻿@model HospitalisedViewModel
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <ul>
+                <img src="https://www.creaturecomfortsanimalhosp.com/wp-content/uploads/2019/05/pets-3.png" style="overflow: hidden; position: relative; width:900px; height:600px;" />
+            </ul>
+        </div>
+        <div class="col-md-4 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <form method="post" asp-controller="Hospital" asp-action="AddInHospital">
+                        <h3 class="register-heading">Sick animal</h3>
+                        <div class="row register-form">
+                            <div class="col-md-9 register-right">
+                                <div class="form-group">
+                                    <label asp-for="One.Name"></label>
+                                    <input asp-for="One.Name" class="form-control">
+                                    <span asp-validation-for="One.Name" class="small text-danger"></span>
+                                </div>
+                                <button type="submit" class="btn btn-secondary">Add in hospital</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>	
