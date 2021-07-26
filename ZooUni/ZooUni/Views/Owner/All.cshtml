@@ -1,29 +1,34 @@
 ﻿@model List<OwnerViewModel>
 
 <h1>
-    <center>There are all owners in the Zoo!</center>
+    <center>There is all information about personnel!</center>
 </h1>
-
+<ul>
+    <center> <h2>Denislav</h2> </center>
+    <center><img src="https://scontent.fsof7-1.fna.fbcdn.net/v/t1.6435-9/170683726_3698435413613297_5138694330872365208_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=ggfOlzfRhgsAX9HLEUp&_nc_ht=scontent.fsof7-1.fna&oh=31728039af5ceff9ab7b05a7404eb13c&oe=612469F4" style="overflow: hidden; position: relative; width:400px; height:400px;" /></center>
+    <center><ul>This is the owner on this web. He is the boss on all personalle in ZooUni!</ul></center>
+</ul>
 <ul>
     @foreach (var owner in Model)
     {
-    <h3>
+        <h3>
+            <ul>
+                @owner.Name
+            </ul>
+        </h3>
         <ul>
-            @owner.Name
+            <img src="@owner.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
         </ul>
-        <ul>
-            @owner.Information
-        </ul>
+        <h5>
+            <ul>
+                @owner.Information
+            </ul>
+        </h5>
         @foreach (var animal in owner.Animals)
         {
             <ul>
                 @animal.Name
             </ul>
-            <ul>
-                <img src="@animal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
-            </ul>
         }
-
-    </h3>
     }
 </ul>

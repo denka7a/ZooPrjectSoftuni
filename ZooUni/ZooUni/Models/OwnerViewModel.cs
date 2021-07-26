@@ -10,6 +10,7 @@ namespace ZooUni.Models
     {
         public string Name { get; set; }
         public string Information { get; set; }
+        public string URL { get; set; }
         public IEnumerable<AnimalViewModel> Animals { get; set; }
     }
 }

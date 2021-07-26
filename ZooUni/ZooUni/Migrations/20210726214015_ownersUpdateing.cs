@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ZooUni.Migrations
 {
-    public partial class ownersseed : Migration
+    public partial class ownersUpdateing : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -66,7 +66,8 @@ namespace ZooUni.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Information = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Information = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    URL = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -216,12 +217,12 @@ namespace ZooUni.Migrations
 
             migrationBuilder.InsertData(
                 table: "Owners",
-                columns: new[] { "Id", "Information", "Name" },
+                columns: new[] { "Id", "Information", "Name", "URL" },
                 values: new object[,]
                 {
-                    { 1, "", "Tom" },
-                    { 2, "", "Jerry" },
-                    { 3, "", "Bugs Bunny" }
+                    { 1, "Tom is responsible for cleaning, feeding and maintaining predators. He`s animals are:", "Tom", "https://i.pinimg.com/originals/92/a6/2f/92a62f0221f58fe503a15fcb13f5c107.png" },
+                    { 2, "Jerry is responsible for cleaning, feeding and maintaining mammals. He`s animals are:", "Jerry", "https://i.pinimg.com/236x/d3/d7/25/d3d72562121f7dbd87d17d3f39ef9cf0--classic-cartoon-characters-classic-cartoons.jpg" },
+                    { 3, "Spike is responsible for cleaning, feeding and maintaining reptiles. He`s animals are:", "Spike", "https://www.seekpng.com/png/detail/62-627979_spike-spike-cartoon-character.png" }
                 });
 
             migrationBuilder.InsertData(

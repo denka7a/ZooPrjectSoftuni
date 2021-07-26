@@ -152,7 +152,8 @@ namespace ZooUni.Data
                 {
                     Id = 1,
                     Name = "Tom",
-                    Information = "",
+                    Information = "Tom is responsible for cleaning, feeding and maintaining predators. He`s animals are:",
+                    URL = "https://i.pinimg.com/originals/92/a6/2f/92a62f0221f58fe503a15fcb13f5c107.png",
                     Animals = new List<Animal>()
                 });
             modelBuilder.Entity<Owner>().HasData(
@@ -160,15 +161,17 @@ namespace ZooUni.Data
                 {
                     Id = 2,
                     Name = "Jerry",
-                    Information = "",
+                    Information = "Jerry is responsible for cleaning, feeding and maintaining mammals. He`s animals are:",
+                    URL = "https://i.pinimg.com/236x/d3/d7/25/d3d72562121f7dbd87d17d3f39ef9cf0--classic-cartoon-characters-classic-cartoons.jpg",
                     Animals = new List<Animal>()
                 });
             modelBuilder.Entity<Owner>().HasData(
                 new Owner
                 {
                     Id = 3,
-                    Name = "Bugs Bunny",
-                    Information = "",
+                    Name = "Spike",
+                    Information = "Spike is responsible for cleaning, feeding and maintaining reptiles. He`s animals are:",
+                    URL = "https://www.seekpng.com/png/detail/62-627979_spike-spike-cartoon-character.png",
                     Animals = new List<Animal>()
                 });
 

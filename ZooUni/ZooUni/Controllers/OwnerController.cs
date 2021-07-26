@@ -26,10 +26,10 @@ namespace ZooUni.Controllers
                 {
                     Name = x.Name,
                     Information = x.Information,
+                    URL = x.URL,
                     Animals = x.Animals.Select(a => new AnimalViewModel
                     {
-                        Name = a.Name,
-                        URL = a.URL
+                        Name = a.Name
                     })
                 .ToList()
                 }).ToList();
