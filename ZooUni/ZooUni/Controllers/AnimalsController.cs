@@ -35,18 +35,46 @@ namespace ZooUni.Controllers
         [HttpPost]
         public IActionResult Add(AnimalViewModel animalViewModel)
         {
+            var animalData = new Animal();
+            if (animalViewModel.Kind == "Predator")
+            {
+                animalData = new Animal
+                {
+                    Type = animalViewModel.Type,
+                    Name = animalViewModel.Name,
+                    URL = animalViewModel.URL,
+                    Kind = animalViewModel.Kind,
+                    OwnerId = 1
+                };
+            }
+            else if (animalViewModel.Kind == "Mammal")
+            {
+                animalData = new Animal
+                {
+                    Type = animalViewModel.Type,
+                    Name = animalViewModel.Name,
+                    URL = animalViewModel.URL,
+                    Kind = animalViewModel.Kind,
+                    OwnerId = 2
+                };
+            }
+            else if (animalViewModel.Kind == "Reptile")
+            {
+                animalData = new Animal
+                {
+                    Type = animalViewModel.Type,
+                    Name = animalViewModel.Name,
+                    URL = animalViewModel.URL,
+                    Kind = animalViewModel.Kind,
+                    OwnerId = 3
+                };
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(animalViewModel);
             }
 
-            var animalData = new Animal
-            {
-                Type = animalViewModel.Type,
-                Name = animalViewModel.Name,
-                URL = animalViewModel.URL,
-                Kind = animalViewModel.Kind
-            };
             this.zooContext.Animals.Add(animalData);
             this.zooContext.SaveChanges();
 

@@ -23,7 +23,8 @@ namespace ZooUni.Controllers
             var hospital = new HospitalisedViewModel();//LazyL
             var currentHospital = zooContext.Hospital.Include(a => a.Animals).FirstOrDefault(x => x.Name == "Hospital");
             var currentAnimal = currentHospital.Animals.FirstOrDefault(x => x.Name == TempData["name"].ToString());
-            hospital.One = new HospitalisedAnimalViewModel
+           
+            hospital.One = new HospitalViewModel
             {
                 Animals = currentHospital.Animals.Select(a => new AnimalViewModel
                 {
@@ -32,7 +33,7 @@ namespace ZooUni.Controllers
                 })
             };
 
-            hospital.Two = this.zooContext.Hospital.Select(x => new HospitalisedAnimalViewModel
+            hospital.Two = this.zooContext.Hospital.Select(x => new HospitalViewModel
             {
                 Name = x.Name,
                 Animals = x.Animals.Select(a => new AnimalViewModel
@@ -41,16 +42,6 @@ namespace ZooUni.Controllers
                     URL = a.URL
                 })
             }).ToList();
-
-            //var hospital = this.zooContext.Hospital.Select(x => new HospitalisedAnimalViewModel
-            //{
-            //    Name = x.Name,
-            //    Animals = x.Animals.Select(a => new AnimalViewModel
-            //    {
-            //        Name = a.Name,
-            //        URL = a.URL
-            //    })
-            //}).ToList();
 
             return View(hospital);
         }
@@ -70,7 +61,7 @@ namespace ZooUni.Controllers
             {
                 var animalsInHospital = new HospitalisedViewModel()
                 {
-                    Two = hospitalData.Animals.Select(a => new HospitalisedAnimalViewModel
+                    Two = hospitalData.Animals.Select(a => new HospitalViewModel
                     {
                         Name = a.Name,
                         Animals = hospitalData.Animals.Select(x => new AnimalViewModel()
@@ -110,25 +101,13 @@ namespace ZooUni.Controllers
                 return View(hospitalisedAnimalViewModel);
             }
 
-            //var hospital = new Hospital
-            //{
-            //    Name = "Hospital"
-            //};
-
             var hospitalData = zooContext.Hospital.FirstOrDefault(x => x.Name == "Hospital");
-
-            //if (hospitalData == null)
-            //{
-            //    this.zooContext.Hospital.Add(hospital);
-            //    this.zooContext.SaveChanges();
-            //}
-
 
             var animal = zooContext.Animals.FirstOrDefault(x => x.Name == hospitalisedAnimalViewModel.One.Name);
 
             if (animal != null)
             {
-                animal.HospitalisedAnimalId = hospitalData.Id;
+                animal.HospitalId = hospitalData.Id;
                 zooContext.Update(animal);
                 this.zooContext.SaveChanges();
             }

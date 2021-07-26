@@ -1,0 +1,29 @@
+﻿@model List<OwnerViewModel>
+
+<h1>
+    <center>There are all owners in the Zoo!</center>
+</h1>
+
+<ul>
+    @foreach (var owner in Model)
+    {
+    <h3>
+        <ul>
+            @owner.Name
+        </ul>
+        <ul>
+            @owner.Information
+        </ul>
+        @foreach (var animal in owner.Animals)
+        {
+            <ul>
+                @animal.Name
+            </ul>
+            <ul>
+                <img src="@animal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
+            </ul>
+        }
+
+    </h3>
+    }
+</ul>

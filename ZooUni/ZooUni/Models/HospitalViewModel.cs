@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooUni.Models
 {
-    public class HospitalisedAnimalViewModel
+    public class HospitalViewModel
     {
         [Required]
         public string Name { get; set; }

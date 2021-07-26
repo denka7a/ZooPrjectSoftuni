@@ -10,8 +10,8 @@ using ZooUni.Data;
 namespace ZooUni.Migrations
 {
     [DbContext(typeof(ZooContext))]
-    [Migration("20210723114519_Hospital")]
-    partial class Hospital
+    [Migration("20210726121223_ownersseed")]
+    partial class ownersseed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -228,7 +228,7 @@ namespace ZooUni.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("HospitalisedAnimalId")
+                    b.Property<int?>("HospitalId")
                         .HasColumnType("int");
 
                     b.Property<string>("Kind")
@@ -236,6 +236,9 @@ namespace ZooUni.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -248,7 +251,9 @@ namespace ZooUni.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HospitalisedAnimalId");
+                    b.HasIndex("HospitalId");
+
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Animals");
 
@@ -258,6 +263,7 @@ namespace ZooUni.Migrations
                             Id = 1,
                             Kind = "Predator",
                             Name = "Pombercho",
+                            OwnerId = 1,
                             Type = "Tiger",
                             URL = "https://www.permaculturenews.org/wp-content/uploads/2020/10/Tiger-Supermarket.jpg"
                         },
@@ -266,6 +272,7 @@ namespace ZooUni.Migrations
                             Id = 2,
                             Kind = "Predator",
                             Name = "Mufasa",
+                            OwnerId = 1,
                             Type = "Lion",
                             URL = "https://ewscripps.brightspotcdn.com/b8/97/543aa49f42adb4cf0e361b3f556d/t10-0078-002.jpg"
                         },
@@ -274,6 +281,7 @@ namespace ZooUni.Migrations
                             Id = 3,
                             Kind = "Mammal",
                             Name = "Emil",
+                            OwnerId = 2,
                             Type = "Giraffe",
                             URL = "https://www.gannett-cdn.com/presto/2019/06/21/PKNS/6d8c357f-2dd6-4730-8d85-5eb6a481ec2a-kns-zoo-0622_BP.JPG"
                         },
@@ -282,6 +290,7 @@ namespace ZooUni.Migrations
                             Id = 4,
                             Kind = "Predator",
                             Name = "Meca",
+                            OwnerId = 1,
                             Type = "Bear",
                             URL = "https://www.indianapoliszoo.com/wp-content/uploads/2018/04/CROPPED_Brown_Bear-Cheryl_Wesselresizedresized.jpg"
                         },
@@ -290,6 +299,7 @@ namespace ZooUni.Migrations
                             Id = 5,
                             Kind = "Mammal",
                             Name = "Ancho",
+                            OwnerId = 2,
                             Type = "Elephant",
                             URL = "https://media.npr.org/assets/img/2017/01/10/elephant1_custom-14cf2c849d4a2c5aaac9d1b017f64c4adb9f04e4.jpg"
                         },
@@ -298,6 +308,7 @@ namespace ZooUni.Migrations
                             Id = 6,
                             Kind = "Reptile",
                             Name = "Adam",
+                            OwnerId = 3,
                             Type = "Crocodile",
                             URL = "https://bristolzoo.org.uk/cmsassets/body/Animals-and-Attractions/Dwarf-Crocodiles/_galleryMainNew/Dwarf-Crododiles-gallery-1.jpg"
                         },
@@ -306,6 +317,7 @@ namespace ZooUni.Migrations
                             Id = 7,
                             Kind = "Predator",
                             Name = "White Fang",
+                            OwnerId = 1,
                             Type = "Wolf",
                             URL = "https://arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/UXEKVA33VJB6VL4ZEYDXF4NTOY.JPG"
                         },
@@ -314,6 +326,7 @@ namespace ZooUni.Migrations
                             Id = 8,
                             Kind = "Mammal",
                             Name = "Rudolph",
+                            OwnerId = 2,
                             Type = "Deer",
                             URL = "https://cdn.pixabay.com/photo/2017/05/23/10/22/deer-2336769_960_720.jpg"
                         },
@@ -322,6 +335,7 @@ namespace ZooUni.Migrations
                             Id = 9,
                             Kind = "Mammal",
                             Name = "Kong",
+                            OwnerId = 2,
                             Type = "Gorilla",
                             URL = "http://cincinnatizoo.org/wp-content/uploads/2014/04/gladys_jomo-005.jpg"
                         },
@@ -330,6 +344,7 @@ namespace ZooUni.Migrations
                             Id = 10,
                             Kind = "Predator",
                             Name = "Freckles",
+                            OwnerId = 1,
                             Type = "Hippopotamus",
                             URL = "https://s.hdnux.com/photos/70/22/51/14756432/3/rawImage.jpg"
                         },
@@ -338,6 +353,7 @@ namespace ZooUni.Migrations
                             Id = 11,
                             Kind = "Reptile",
                             Name = "Franklin",
+                            OwnerId = 3,
                             Type = "Turtle",
                             URL = "https://d3i6fh83elv35t.cloudfront.net/static/2017/11/4934015500_711809ea1e_b-1024x747.jpg"
                         },
@@ -346,6 +362,7 @@ namespace ZooUni.Migrations
                             Id = 12,
                             Kind = "Reptile",
                             Name = "Konan",
+                            OwnerId = 3,
                             Type = "Varan",
                             URL = "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/images/komodo.jpg?itok=z9J3SnRt"
                         });
@@ -370,6 +387,44 @@ namespace ZooUni.Migrations
                         {
                             Id = 1,
                             Name = "Hospital"
+                        });
+                });
+
+            modelBuilder.Entity("ZooUni.Data.Models.Owner", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Information")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Owners");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Information = "",
+                            Name = "Tom"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Information = "",
+                            Name = "Jerry"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Information = "",
+                            Name = "Bugs Bunny"
                         });
                 });
 
@@ -426,14 +481,27 @@ namespace ZooUni.Migrations
 
             modelBuilder.Entity("ZooUni.Data.Models.Animal", b =>
                 {
-                    b.HasOne("ZooUni.Data.Models.Hospital", "HospitalisedAnimal")
+                    b.HasOne("ZooUni.Data.Models.Hospital", "Hospital")
                         .WithMany("Animals")
-                        .HasForeignKey("HospitalisedAnimalId");
+                        .HasForeignKey("HospitalId");
 
-                    b.Navigation("HospitalisedAnimal");
+                    b.HasOne("ZooUni.Data.Models.Owner", "Owner")
+                        .WithMany("Animals")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hospital");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("ZooUni.Data.Models.Hospital", b =>
+                {
+                    b.Navigation("Animals");
+                });
+
+            modelBuilder.Entity("ZooUni.Data.Models.Owner", b =>
                 {
                     b.Navigation("Animals");
                 });

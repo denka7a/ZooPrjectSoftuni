@@ -7,7 +7,7 @@ namespace ZooUni.Models
 {
     public class HospitalisedViewModel
     {
-        public HospitalisedAnimalViewModel One { get; set; }
-        public List<HospitalisedAnimalViewModel> Two { get; set; }
+        public HospitalViewModel One { get; set; }
+        public List<HospitalViewModel> Two { get; set; }
     }
 }

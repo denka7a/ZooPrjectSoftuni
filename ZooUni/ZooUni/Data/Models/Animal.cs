@@ -18,8 +18,10 @@ namespace ZooUni.Data.Models
         public string URL { get; set; }
         //[Required]
         public string Kind { get; set; }
-        public int? HospitalisedAnimalId { get; set; }
-        public Hospital HospitalisedAnimal { get; set; }
+        public int? HospitalId { get; set; }
+        public Hospital Hospital { get; set; }
+        public int OwnerId { get; set; }
+        public Owner Owner { get; set; }
 
     }
 }
