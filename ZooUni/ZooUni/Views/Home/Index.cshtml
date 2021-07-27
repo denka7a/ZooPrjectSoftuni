@@ -7,5 +7,31 @@
     <ul>
         <img src="https://d3tidaycr45ky4.cloudfront.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/l/planet-zoo.jpg" style="overflow: hidden; position: relative; width:1000px; height:600px;" />
     </ul>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div class="row">
+    <div class="col-12 text-center">
+        <button class="btn btn-primary" id="animals-button">Show information</button>
+    </div>
+</div>
+
+<div class="jumbotron d-none" id="animals">
+    <div class="row">
+        <h2 class="col-md-4 text-center" id="total-animals"></h2>
+        <h2 class="col-md-4 text-center" id="total-users"></h2>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $('#animals-button').on('click', ev => {
+            $.get('/api/animals', (data) => {
+                $('#total-animals').text(data.totalAnimals + " Animals");
+                $('#total-users').text(data.totalUsers + " Users");
+
+                $('#animals').removeClass('d-none');
+                $('#animals-button').hide();
+            });
+        });
+    </script>
+}
