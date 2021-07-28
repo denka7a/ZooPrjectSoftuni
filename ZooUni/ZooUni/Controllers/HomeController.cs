@@ -8,43 +8,29 @@ using System.Threading.Tasks;
 using ZooUni.Data;
 using ZooUni.Models;
 using ZooUni.Models.Home;
+using ZooUni.Services.Home;
 
 namespace ZooUni.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly ZooContext context;
+        private readonly IStatisticsService service;
 
-        public HomeController(ZooContext context)
+        public HomeController(IStatisticsService service)
         {
-            this.context = context;
+            this.service = service;
         }
-
-        //public HomeController(ILogger<HomeController> logger)
-        //{
-        //    _logger = logger;
-        //}
-        
 
         public IActionResult Index()
         {
-            var totalAnimals = this.context.Animals.Count();
-            var totalUsers = this.context.Users.Count();
+            var statistics = service.GetAll();
 
             return View(new IndexViewModel
             {
-                TotalAnimals = totalAnimals,
-                TotalUsers = totalUsers
+                TotalAnimals = statistics.TotalAnimals,
+                TotalUsers = statistics.TotalUsers
             });
         }
-
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

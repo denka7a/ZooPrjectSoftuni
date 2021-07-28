@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZooUni.Models.Api.Animals
 {
-    public class AnimalsResponseModel
+    public class StatisticsResponseModel
     {
         public int TotalAnimals { get; set; }
         public int TotalUsers { get; set; }

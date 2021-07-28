@@ -10,26 +10,26 @@ namespace ZooUni.Controllers.Api
 {
     [ApiController]
     [Route("api/animals")]
-    public class AnimalsApiController : ControllerBase
+    public class StatisticsApiController : ControllerBase
     {
         private readonly ZooContext context;
-        public AnimalsApiController(ZooContext context)
+        public StatisticsApiController(ZooContext context)
         {
             this.context = context;
         }
         [HttpGet]
-        public AnimalsResponseModel GetAnimals()
+        public StatisticsResponseModel GetAnimals()
         {
             var totalAnimals = this.context.Animals.Count();
             var totalUsers = this.context.Users.Count();
 
-            var animals = new AnimalsResponseModel
+            var statistics = new StatisticsResponseModel
             {
                 TotalAnimals = totalAnimals,
                 TotalUsers = totalUsers
             };
 
-            return animals;
+            return statistics;
         }
         //[Route("details")]  --> /api/animals/details
         //public IActionResult GetAnimal()  

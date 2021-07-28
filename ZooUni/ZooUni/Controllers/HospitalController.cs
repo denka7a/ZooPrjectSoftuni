@@ -7,78 +7,41 @@ using System.Threading.Tasks;
 using ZooUni.Data;
 using ZooUni.Data.Models;
 using ZooUni.Models;
+using ZooUni.Services.Hospital;
 
 namespace ZooUni.Controllers
 {
     public class HospitalController : Controller
     {
-        private readonly ZooContext zooContext;
-        public HospitalController(ZooContext zooContext)
+        private readonly IHospitalService service;
+
+        public HospitalController(IHospitalService service)
         {
-            this.zooContext = zooContext;
+            this.service = service;
         }
 
         public IActionResult RemoveFromHospital()
         {
-            var hospital = new HospitalisedViewModel();//LazyL
-            var currentHospital = zooContext.Hospital.Include(a => a.Animals).FirstOrDefault(x => x.Name == "Hospital");
-            var currentAnimal = currentHospital.Animals.FirstOrDefault(x => x.Name == TempData["name"].ToString());
-           
-            hospital.One = new HospitalViewModel
-            {
-                Animals = currentHospital.Animals.Select(a => new AnimalViewModel
-                {
-                    Name = a.Name,
-                    URL = a.URL
-                })
-            };
-
-            hospital.Two = this.zooContext.Hospital.Select(x => new HospitalViewModel
-            {
-                Name = x.Name,
-                Animals = x.Animals.Select(a => new AnimalViewModel
-                {
-                    Name = a.Name,
-                    URL = a.URL
-                })
-            }).ToList();
-
+            var hospital = service.RemoveFromHospital(TempData["name"].ToString());
             return View(hospital);
         }
+
         [HttpPost]
         public IActionResult RemoveFromHospital(HospitalisedViewModel hospitalisedAnimalViewModel)
         {
-            var hospitalData = zooContext
-                .Hospital
-                .Include(x => x.Animals)
-                .FirstOrDefault(x => x.Name == "Hospital");
-
-            var animalInHospital = hospitalData
-                .Animals
-                .FirstOrDefault(x => x.Name == hospitalisedAnimalViewModel.One.Name);
+            var animal = service.GetAnimalFromHospital(hospitalisedAnimalViewModel.One.Name);
 
             if (!ModelState.IsValid)
             {
-                var animalsInHospital = new HospitalisedViewModel()
-                {
-                    Two = hospitalData.Animals.Select(a => new HospitalViewModel
-                    {
-                        Name = a.Name,
-                        Animals = hospitalData.Animals.Select(x => new AnimalViewModel()
-                        {
-                            Name = x.Name,
-                            URL = x.URL
-                        }).ToList()
-                    }).ToList()
-                };
+                var animalsInHospital = service.AnimalsInHospital();
+                
                 return View(animalsInHospital);
             }
 
-            if (animalInHospital != null)
+
+            if (animal != null)
             {
-                hospitalData.Animals.Remove(animalInHospital);
-                zooContext.Update(animalInHospital);
-                this.zooContext.SaveChanges();
+                service.RemoveAnimal(animal.Hospital, animal);
             }
 
             return Redirect("/Animals/All");
@@ -92,28 +55,13 @@ namespace ZooUni.Controllers
         [HttpPost]
         public IActionResult AddInHospital(HospitalisedViewModel hospitalisedAnimalViewModel)
         {
-            var animals = zooContext
-                .Animals
-                .ToList();
-
             if (!ModelState.IsValid)
             {
                 return View(hospitalisedAnimalViewModel);
             }
 
-            var hospitalData = zooContext.Hospital.FirstOrDefault(x => x.Name == "Hospital");
-
-            var animal = zooContext.Animals.FirstOrDefault(x => x.Name == hospitalisedAnimalViewModel.One.Name);
-
-            if (animal != null)
-            {
-                animal.HospitalId = hospitalData.Id;
-                zooContext.Update(animal);
-                this.zooContext.SaveChanges();
-            }
-
+            service.AddInHospital(hospitalisedAnimalViewModel);
             TempData["name"] = hospitalisedAnimalViewModel.One.Name;
-
             return RedirectToAction(nameof(RemoveFromHospital));
         }
     }

@@ -12,6 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZooUni.Data;
+using ZooUni.Services.Animals;
+using ZooUni.Services.Home;
+using ZooUni.Services.Hospital;
 
 namespace ZooUni
 {
@@ -24,7 +27,6 @@ namespace ZooUni
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ZooContext>(options =>
@@ -43,6 +45,11 @@ namespace ZooUni
                 .AddEntityFrameworkStores<ZooContext>();
 
             services.AddControllersWithViews();
+
+            services.AddTransient<IAnimalService, AnimalService>();
+            services.AddTransient<IHospitalService, HospitalService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
