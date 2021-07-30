@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using ZooUni.Data;
 using ZooUni.Models;
@@ -19,6 +20,7 @@ namespace ZooUni.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Predator()
         {
             var animals = this.service.GetAnimals();
@@ -26,6 +28,7 @@ namespace ZooUni.Controllers
             return View(animals);
         }
 
+        [Authorize]
         public IActionResult Mammal()
         {
             var animals = this.service.GetAnimals();
@@ -33,6 +36,7 @@ namespace ZooUni.Controllers
             return View(animals);
         }
 
+        [Authorize]
         public IActionResult Reptile()
         {
             var animals = this.service.GetAnimals();

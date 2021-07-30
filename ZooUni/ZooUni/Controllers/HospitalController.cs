@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace ZooUni.Controllers
             this.service = service;
         }
 
+        [Authorize]
         public IActionResult RemoveFromHospital()
         {
             var hospital = service.RemoveFromHospital(TempData["name"].ToString());
@@ -27,6 +29,8 @@ namespace ZooUni.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public IActionResult RemoveFromHospital(HospitalisedViewModel hospitalisedAnimalViewModel)
         {
             var animal = service.GetAnimalFromHospital(hospitalisedAnimalViewModel.One.Name);
@@ -47,12 +51,15 @@ namespace ZooUni.Controllers
             return Redirect("/Animals/All");
         }
 
+        [Authorize]
         public IActionResult AddInHospital()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public IActionResult AddInHospital(HospitalisedViewModel hospitalisedAnimalViewModel)
         {
             if (!ModelState.IsValid)

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,13 @@ namespace ZooUni.Controllers
     public class OwnerController : Controller
     {
         private readonly IOwnerService service;
+
         public OwnerController(IOwnerService service)
         {
             this.service = service;
         }
+
+        [Authorize]
         public IActionResult All()
         {
             var owners = service.GetOwners();

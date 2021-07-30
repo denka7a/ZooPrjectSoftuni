@@ -7,6 +7,7 @@ using ZooUni.Models;
 using ZooUni.Data;
 using ZooUni.Data.Models;
 using ZooUni.Services.Animals;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZooUni.Controllers
 {
@@ -19,6 +20,7 @@ namespace ZooUni.Controllers
             this.service = service;
         }
 
+        [Authorize]
         public IActionResult All()
         {
             var animals = this.service.All();
@@ -26,9 +28,12 @@ namespace ZooUni.Controllers
             return View(animals);
         }
 
+        [Authorize]
         public IActionResult Add() => View();
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken] // <- pri triene na tokena ot strana na hackera, toi polu4ava BadRequest
         public IActionResult Add(AnimalViewModel animalViewModel)
         {
             if (!ModelState.IsValid)
