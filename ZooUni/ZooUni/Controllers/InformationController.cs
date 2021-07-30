@@ -2,16 +2,16 @@
 using System.Linq;
 using ZooUni.Data;
 using ZooUni.Models;
+using ZooUni.Services.Information;
 
 namespace ZooUni.Controllers
 {
     public class InformationController : Controller
     {
-        private readonly ZooContext zooContext;
-
-        public InformationController(ZooContext zooContex)
+        private readonly IInformationService service;
+        public InformationController(IInformationService service)
         {
-            this.zooContext = zooContex;
+            this.service = service;
         }
 
         public IActionResult Info()
@@ -21,36 +21,21 @@ namespace ZooUni.Controllers
 
         public IActionResult Predator()
         {
-            var animals = this.zooContext.Animals.Select(x => new AnimalViewModel
-            {
-                Type = x.Type,
-                URL = x.URL,
-                Kind = x.Kind
-            }).ToList();
+            var animals = this.service.GetAnimals();
 
             return View(animals);
         }
 
         public IActionResult Mammal()
         {
-            var animals = this.zooContext.Animals.Select(x => new AnimalViewModel
-            {
-                Type = x.Type,
-                URL = x.URL,
-                Kind = x.Kind
-            }).ToList();
+            var animals = this.service.GetAnimals();
 
             return View(animals);
         }
 
         public IActionResult Reptile()
         {
-            var animals = this.zooContext.Animals.Select(x => new AnimalViewModel
-            {
-                Type = x.Type,
-                URL = x.URL,
-                Kind = x.Kind
-            }).ToList();
+            var animals = this.service.GetAnimals();
 
             return View(animals);
         }

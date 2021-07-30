@@ -15,6 +15,8 @@ using ZooUni.Data;
 using ZooUni.Services.Animals;
 using ZooUni.Services.Home;
 using ZooUni.Services.Hospital;
+using ZooUni.Services.Information;
+using ZooUni.Services.Owner;
 
 namespace ZooUni
 {
@@ -49,6 +51,8 @@ namespace ZooUni
             services.AddTransient<IAnimalService, AnimalService>();
             services.AddTransient<IHospitalService, HospitalService>();
             services.AddTransient<IStatisticsService, StatisticsService>();
+            services.AddTransient<IInformationService, InformationService>();
+            services.AddTransient<IOwnerService, OwnerService>();
 
         }
 

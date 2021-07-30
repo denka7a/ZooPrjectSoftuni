@@ -7,32 +7,20 @@ using System.Threading.Tasks;
 using ZooUni.Data;
 using ZooUni.Data.Models;
 using ZooUni.Models;
+using ZooUni.Services.Owner;
 
 namespace ZooUni.Controllers
 {
     public class OwnerController : Controller
     {
-        private readonly ZooContext zooContex;
-
-        public OwnerController(ZooContext zooContext)
+        private readonly IOwnerService service;
+        public OwnerController(IOwnerService service)
         {
-            this.zooContex = zooContext;
+            this.service = service;
         }
-
         public IActionResult All()
         {
-            var owners = zooContex.Owners
-                .Select(x => new OwnerViewModel
-                {
-                    Name = x.Name,
-                    Information = x.Information,
-                    URL = x.URL,
-                    Animals = x.Animals.Select(a => new AnimalViewModel
-                    {
-                        Name = a.Name
-                    })
-                .ToList()
-                }).ToList();
+            var owners = service.GetOwners();
 
             return View(owners);
         }
