@@ -103,5 +103,14 @@ namespace ZooUni.Services.Animals
             this.context.SaveChanges();
             return true;
         }
+
+        public void Delete(int id)
+        {
+            var currentAnimal = context.Animals.Find(id);
+            context.Remove(currentAnimal);
+
+            this.context.SaveChanges();
+        }
+
     }
 }

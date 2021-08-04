@@ -13,6 +13,6 @@ namespace ZooUni.Services.Animals
         void Add(AnimalViewModel animalViewModel);
         AnimalViewModel AnimalById(int id);
         bool Edit(int id, string type, string name, string url, string kind);
-
+        void Delete(int id);
     }
 }

@@ -60,17 +60,20 @@ namespace ZooUni.Controllers
                 Kind = animal.Kind
             });
         }
+
         [HttpPost]
         [Authorize]
         public IActionResult Edit(int id, string type, string name, string url, string kind)
         {
             var animalIsEdited = service.Edit(id, type, name, url, kind);
 
-            //if (!animalIsEdited)
-            //{
-            //    return BadRequest();
-            //}
+            return RedirectToAction(nameof(All));
+        }
 
+        [Authorize]
+        public IActionResult Delete(int id)
+        {
+            service.Delete(id);
             return RedirectToAction(nameof(All));
         }
     }

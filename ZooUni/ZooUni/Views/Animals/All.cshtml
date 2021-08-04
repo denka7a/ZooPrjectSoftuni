@@ -4,7 +4,6 @@
     <center>There are all animals in the Zoo!</center>
 </h1>
 
-@*<a asp-controller="Animals" asp-action="Delete" asp-route-id="@animal.Id" class="btn btn-danger">Delete</a>*@
 
 <ul>
     @foreach (var animal in Model)
@@ -20,6 +19,7 @@
                 <img src="@animal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
             </ul>
             <a asp-controller="Animals" asp-action="Edit" asp-route-id="@animal.Id" class="btn btn-warning">Edit</a>
+            <a asp-controller="Animals" asp-action="Delete" asp-route-id="@animal.Id" class="btn btn-danger">Delete</a>
         </h3>
     }
 </ul>
