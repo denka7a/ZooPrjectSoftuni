@@ -21,6 +21,7 @@ namespace ZooUni.Services.Animals
         {
             var animals = this.context.Animals.Select(x => new AnimalViewModel
             {
+                Id = x.Id,
                 Type = x.Type,
                 Name = x.Name,
                 URL = x.URL,
@@ -69,6 +70,38 @@ namespace ZooUni.Services.Animals
 
             this.context.Animals.Add(animalData);
             this.context.SaveChanges();
+        }
+
+        public AnimalViewModel AnimalById(int id)
+        => context.Animals
+            .Where(a => a.Id == id)
+            .Select(a => new AnimalViewModel
+            {
+                Id = a.Id,
+                Type = a.Type,
+                Name = a.Name,
+                URL = a.URL,
+                Kind = a.Kind
+            })
+            .FirstOrDefault();
+
+        public bool Edit(int id, string type, string name, string url, string kind)
+        {
+            var animalData = context.Animals.Find(id);
+
+            animalData.Id = id;
+            animalData.Type = type;
+            animalData.Name = name;
+            animalData.URL = url;
+            animalData.Kind = kind;
+
+            if (animalData == null)
+            {
+                return false;
+            }
+            this.context.Update(animalData);
+            this.context.SaveChanges();
+            return true;
         }
     }
 }

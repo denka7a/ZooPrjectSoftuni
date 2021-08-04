@@ -45,5 +45,33 @@ namespace ZooUni.Controllers
 
             return RedirectToAction(nameof(All));
         }
+
+        [Authorize]
+        public IActionResult Edit(int id)
+        {
+            var animal = service.AnimalById(id);
+
+            return View(new AnimalViewModel
+            {
+                Id = animal.Id,
+                Type = animal.Type,
+                Name = animal.Name,
+                URL = animal.URL,
+                Kind = animal.Kind
+            });
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult Edit(int id, string type, string name, string url, string kind)
+        {
+            var animalIsEdited = service.Edit(id, type, name, url, kind);
+
+            //if (!animalIsEdited)
+            //{
+            //    return BadRequest();
+            //}
+
+            return RedirectToAction(nameof(All));
+        }
     }
 }

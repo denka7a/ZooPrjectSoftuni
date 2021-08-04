@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using ZooUni.Models;
+using System.Text;
 using static ZooUni.Data.ViewsConstants.Animal;
 
-namespace ZooUni.Models
+namespace ZooUni.Data.Models
 {
-    public class AnimalViewModel
+    public class Animal
     {
         [Required]
         public int Id { get; set; }
+
         [Required]
-        [StringLength(TypeMaxLength), MinLength(TypeMinLength)]
+        [MaxLength(TypeMaxLength)]
         public string Type { get; set; }
 
         [Required]
-        [StringLength(NameMaxLength), MinLength(NameMinLength)]
+        [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
         [Required]
@@ -26,5 +25,12 @@ namespace ZooUni.Models
 
         [Required]
         public string Kind { get; set; }
+
+        public int? HospitalId { get; set; }
+        public Hospital Hospital { get; set; }
+
+        public int OwnerId { get; set; }
+        public Owner Owner { get; set; }
+
     }
 }

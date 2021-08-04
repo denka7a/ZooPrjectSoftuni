@@ -3,40 +3,5 @@
     ViewData["Title"] = "Add Animal";
 }
 
-<div class="offset-3 col-6">
-    <form method="post">
-        <h2>Add animal</h2>
-        <div class="form-group">
-            <label asp-for="Type"></label>
-            <input asp-for="Type" class="form-control" placeholder="Tiger, Lion, etc...">
-            <span asp-validation-for="Type" class="small text-danger"></span>
-        </div>
+<partial name="_AnimalFormPartial" model="@Model" />
 
-        <div class="form-group">
-            <label asp-for="Name"></label>
-            <input asp-for="Name" class="form-control" placeholder="Pombercho, Garfild...">
-            <span asp-validation-for="Name" class="small text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="URL"></label>
-            <input asp-for="URL" class="form-control" placeholder="Your image URL here...">
-        </div>
-
-        @*<div class="form-group">
-                <label asp-for="Kind"></label>
-                <input asp-for="Kind" class="form-control" placeholder="Predator, Mammal, Reptile...">
-            </div>*@
-
-        <div class="form-group">
-            <label asp-for="Kind">Kind</label>
-            <select asp-for="Kind" class="form-control">
-                <option>Predator</option>
-                <option>Mammal</option>
-                <option>Reptile</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>

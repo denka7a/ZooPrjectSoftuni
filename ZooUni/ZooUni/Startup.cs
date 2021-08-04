@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ZooUni.Data;
+using ZooUni.Data.Models;
 using ZooUni.Services.Animals;
 using ZooUni.Services.Home;
 using ZooUni.Services.Hospital;
@@ -37,13 +38,14 @@ namespace ZooUni
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => 
+            services.AddDefaultIdentity<User>(options => 
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
             })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ZooContext>();
 
             services.AddControllersWithViews();
