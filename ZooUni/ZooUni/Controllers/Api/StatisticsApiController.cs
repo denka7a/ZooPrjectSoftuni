@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ZooUni.Data;
 using ZooUni.Models.Api.Animals;
+using ZooUni.Services.Home;
 
 namespace ZooUni.Controllers.Api
 {
@@ -12,21 +13,22 @@ namespace ZooUni.Controllers.Api
     [Route("api/animals")]
     public class StatisticsApiController : ControllerBase
     {
-        private readonly ZooContext context;
-        public StatisticsApiController(ZooContext context)
+        private readonly IStatisticsService service;
+
+        public StatisticsApiController(IStatisticsService service)
         {
-            this.context = context;
+            this.service = service;
         }
+
         [HttpGet]
         public StatisticsResponseModel GetAnimals()
         {
-            var totalAnimals = this.context.Animals.Count();
-            var totalUsers = this.context.Users.Count();
+            var data = this.service.GetAll();
 
             var statistics = new StatisticsResponseModel
             {
-                TotalAnimals = totalAnimals,
-                TotalUsers = totalUsers
+                TotalAnimals = data.TotalAnimals,
+                TotalUsers = data.TotalUsers
             };
 
             return statistics;

@@ -8,5 +8,7 @@ namespace ZooUni.Services.Home
     public interface IStatisticsService
     {
         StatisticsServiceModel GetAll();
+        public int GetUsers();
+        public int GetAnimals();
     }
 }

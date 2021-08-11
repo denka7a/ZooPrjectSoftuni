@@ -182,6 +182,20 @@ namespace ZooUni.Data
                     Name = "Hospital"
                 });
 
+            modelBuilder.Entity<IdentityRole>().HasData
+                (new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
+                },
+                new IdentityRole
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "User",
+                    NormalizedName = "USER"
+                });
+
             base.OnModelCreating(modelBuilder);
         }
     }

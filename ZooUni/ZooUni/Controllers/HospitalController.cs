@@ -26,6 +26,8 @@ namespace ZooUni.Controllers
         {
             var hospital = service.RemoveFromHospital(TempData["name"].ToString());
             return View(hospital);
+
+           
         }
 
         [HttpPost]

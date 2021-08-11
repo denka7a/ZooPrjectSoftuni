@@ -24,7 +24,7 @@ namespace ZooUni.Controllers
         public IActionResult All()
         {
             var animals = this.service.All();
-
+            //var isAdmin = this.User.IsInRole("Administrator");
             return View(animals);
         }
 
@@ -49,6 +49,11 @@ namespace ZooUni.Controllers
         [Authorize]
         public IActionResult Edit(int id)
         {
+            if (service.AnimalById(id) == null)
+            {
+                return NotFound();
+            }
+
             var animal = service.AnimalById(id);
 
             return View(new AnimalViewModel
@@ -65,6 +70,11 @@ namespace ZooUni.Controllers
         [Authorize]
         public IActionResult Edit(int id, string type, string name, string url, string kind)
         {
+            if (service.AnimalById(id) == null)
+            {
+                return NotFound();
+            }
+
             var animalIsEdited = service.Edit(id, type, name, url, kind);
 
             return RedirectToAction(nameof(All));
@@ -73,6 +83,11 @@ namespace ZooUni.Controllers
         [Authorize]
         public IActionResult Delete(int id)
         {
+            if (service.AnimalById(id) == null)
+            {
+                return NotFound();
+            }
+
             service.Delete(id);
             return RedirectToAction(nameof(All));
         }

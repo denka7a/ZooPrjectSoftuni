@@ -26,5 +26,16 @@ namespace ZooUni.Services.Home
                 TotalUsers = allUsers
             };
         }
+        public int GetAnimals()
+        {
+            var allAnimals = context.Animals.Count();
+            return allAnimals;
+        }
+
+        public int GetUsers()
+        {
+            var allUsers = context.Users.Count();
+            return allUsers;
+        }
     }
 }
