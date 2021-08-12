@@ -1,27 +1,37 @@
 ﻿@model List<AnimalViewModel>
-
+@{ 
+    var count = 1;
+}
 <h1>
     <center>There are all animals in the Zoo!</center>
 </h1>
 
-
-<ul>
-    @foreach (var animal in Model)
-    {
-        <h3>
-            <ul>
-                @animal.Type
-            </ul>
-            <ul>
-                @animal.Name
-            </ul>
-            <ul>
-                <img src="@animal.URL" style="overflow: hidden; position: relative; width:400px; height:400px;" />
-            </ul>
-            <a asp-controller="Animals" asp-action="Edit" asp-route-id="@animal.Id" class="btn btn-warning">Edit</a>
-            <a asp-controller="Animals" asp-action="Delete" asp-route-id="@animal.Id" class="btn btn-danger">Delete</a>
-        </h3>
-    }
-</ul>
-
-
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Animal Type</th>
+            <th scope="col">Animal Name</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Buttons</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <th scope="row">@count</th>
+                <td>@animal.Type</td>
+                <td>@animal.Name</td>
+                <td>
+                    <img src="@animal.URL" style="overflow: hidden; position: relative; width:200px; height:200px;" />
+                </td>
+                <td>
+                    <a asp-controller="Animals" asp-action="Edit" asp-route-id="@animal.Id" class="btn btn-warning">Edit</a>
+                    <a asp-controller="Animals" asp-action="Delete" asp-route-id="@animal.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+</table>

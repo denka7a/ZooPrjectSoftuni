@@ -38,7 +38,7 @@ namespace ZooUni.Services.Hospital
 
         public HospitalisedViewModel RemoveFromHospital(string name)
         {
-            var hospital = new HospitalisedViewModel();//LazyL
+            var hospital = new HospitalisedViewModel();
             var currentHospital = context.Hospital.Include(a => a.Animals).FirstOrDefault(x => x.Name == "Hospital");
             var currentAnimal = currentHospital.Animals.FirstOrDefault(x => x.Name == name);
 

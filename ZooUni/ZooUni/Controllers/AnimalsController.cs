@@ -24,7 +24,6 @@ namespace ZooUni.Controllers
         public IActionResult All()
         {
             var animals = this.service.All();
-            //var isAdmin = this.User.IsInRole("Administrator");
             return View(animals);
         }
 
@@ -33,7 +32,7 @@ namespace ZooUni.Controllers
 
         [HttpPost]
         [Authorize]
-        [ValidateAntiForgeryToken] // <- pri triene na tokena ot strana na hackera, toi polu4ava BadRequest
+        [ValidateAntiForgeryToken]
         public IActionResult Add(AnimalViewModel animalViewModel)
         {
             if (!ModelState.IsValid)
@@ -68,6 +67,7 @@ namespace ZooUni.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, string type, string name, string url, string kind)
         {
             if (service.AnimalById(id) == null)
