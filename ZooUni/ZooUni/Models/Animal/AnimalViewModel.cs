@@ -20,8 +20,8 @@ namespace ZooUni.Models
         [StringLength(NameMaxLength), MinLength(NameMinLength)]
         public string Name { get; set; }
 
-        [Required]
         [Url]
+        [Required]
         public string URL { get; set; }
 
         [Required]

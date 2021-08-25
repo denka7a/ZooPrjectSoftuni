@@ -19,8 +19,8 @@ namespace ZooUni.Data.Models
         [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
-        [Required]
         [Url]
+        [Required]
         public string URL { get; set; }
 
         [Required]
